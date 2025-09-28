@@ -800,6 +800,13 @@ select.form-control {
   font-size: var(--font-size-xl);
 }
 
+/* Fix for subtitle visibility */
+.subtitle {
+  color: var(--color-text) !important;
+  font-weight: 700 !important;
+  font-size: var(--font-size-xl) !important;
+}
+
 .social-links .btn {
   margin: var(--space-4);
   border-radius: var(--radius-full);
@@ -826,8 +833,8 @@ select.form-control {
 
 .section-title {
   font-size: var(--font-size-3xl);
-  font-weight: var(--font-weight-bold);
-  color: var(--color-text);
+  font-weight: 700 !important;
+  color: var(--color-text) !important;
   margin-bottom: var(--space-32);
   position: relative;
 }
@@ -966,30 +973,150 @@ select.form-control {
   margin-bottom: 0;
 }
 
-/* Leadership Section */
-.leadership-item .card-header {
-  background-color: var(--color-bg-2);
-  border-bottom: 1px solid var(--color-card-border);
+/* Leadership Section - Matching Work Experience */
+#leadership {
+  background-color: var(--color-background);
 }
 
-.leadership-item h4 {
+#leadership .experience-item {
+  border: none;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--duration-normal) var(--ease-standard);
+  overflow: hidden;
+}
+
+#leadership .experience-item:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+#leadership .experience-item .card-header {
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-card-border);
+  padding: var(--space-20);
+}
+
+#leadership .experience-item h4 {
   color: var(--color-text);
   font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-xl);
+}
+
+#leadership .experience-item h5 {
+  color: var(--color-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-lg);
+}
+
+/* Skills & Expertise Section */
+#skills {
+  background-color: var(--color-bg-2);
+}
+
+.skills-card {
+  border: none;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--duration-normal) var(--ease-standard);
+  background-color: var(--color-surface);
+}
+
+.skills-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+.skills-card .card-title {
+  color: var(--color-text);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-lg);
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+}
+
+.skill-tag {
+  display: inline-block;
+  background-color: var(--color-secondary);
+  color: var(--color-text);
+  padding: var(--space-6) var(--space-12);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  border: 1px solid var(--color-border);
+  transition: all var(--duration-fast) var(--ease-standard);
+}
+
+.skill-tag:hover {
+  background-color: var(--color-primary);
+  color: var(--color-btn-primary-text);
+  transform: translateY(-1px);
 }
 
 /* Certifications Section */
 #certifications {
-  background-color: var(--color-bg-4);
+  background-color: var(--color-background);
 }
 
-#certifications .text-muted {
+.certification-card {
+  border: none;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--duration-normal) var(--ease-standard);
+  background-color: var(--color-surface);
+}
+
+.certification-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+}
+
+.cert-logo {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cert-title {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  margin-bottom: var(--space-8);
+  line-height: 1.3;
+}
+
+.cert-issuer {
+  font-size: var(--font-size-sm);
   color: var(--color-text-secondary) !important;
-  font-size: var(--font-size-lg);
+  margin-bottom: var(--space-4);
+}
+
+.cert-date {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-16);
+  font-weight: var(--font-weight-medium);
+}
+
+.certification-card .btn-outline-primary {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  font-size: var(--font-size-sm);
+}
+
+.certification-card .btn-outline-primary:hover {
+  background-color: var(--color-primary);
+  color: var(--color-btn-primary-text);
 }
 
 /* Contact Section */
 #contact {
-  background: linear-gradient(135deg, var(--color-bg-5), var(--color-bg-7));
+  background: linear-gradient(135deg, var(--color-bg-3), var(--color-bg-5));
 }
 
 #contact p {
@@ -1094,6 +1221,14 @@ footer p {
     margin-top: var(--space-8);
     width: fit-content;
   }
+
+  .skills-list {
+    justify-content: center;
+  }
+
+  .cert-title {
+    font-size: var(--font-size-sm);
+  }
 }
 
 @media (max-width: 576px) {
@@ -1107,6 +1242,21 @@ footer p {
   
   .experience-item h5 {
     font-size: var(--font-size-md);
+  }
+
+  .skills-card .card-body {
+    padding: var(--space-16);
+  }
+
+  .certification-card .card-body {
+    padding: var(--space-16);
+  }
+}
+
+@media (min-width: 1200px) {
+  .certification-card {
+    max-width: 280px;
+    margin: 0 auto;
   }
 }
 
@@ -1129,4 +1279,39 @@ html {
 
 .collapsing {
   transition: height var(--duration-normal) var(--ease-standard);
+}
+
+/* Additional hover effects for certification cards */
+.certification-card .cert-logo i {
+  transition: transform var(--duration-fast) var(--ease-standard);
+}
+
+.certification-card:hover .cert-logo i {
+  transform: scale(1.1);
+}
+
+/* Skills card icon hover effects */
+.skills-card i {
+  transition: transform var(--duration-fast) var(--ease-standard);
+}
+
+.skills-card:hover i {
+  transform: scale(1.1);
+}
+
+/* Ensure consistent card heights */
+.skills-card,
+.certification-card {
+  height: 100%;
+}
+
+.skills-card .card-body,
+.certification-card .card-body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.certification-card .card-body {
+  justify-content: space-between;
 }
